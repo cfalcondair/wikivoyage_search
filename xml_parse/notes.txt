@@ -1,0 +1,5 @@
+There are 56334 pages received
+
+Only appears to be 1 comment per page, and does not contain any useful information for us.
+There appear to be some redirect pages, so we need to filter those out.
+
