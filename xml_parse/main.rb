@@ -29,7 +29,7 @@ class Main
 
   def print_dump_descriptor
     File.open('data/dump_desription', 'w+') do |f|
-      f << 'name|alt_name|lat|long|content|page_title'
+      f << 'name|alt_name|lat|long|content|page_title|type'
     end
   end
 

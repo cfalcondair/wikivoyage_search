@@ -15,7 +15,8 @@ class PointOfInterest
      lat,
      lon,
      content,
-     page_title
+     page_title,
+     @type
    ]
   end
 
