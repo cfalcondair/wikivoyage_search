@@ -1,10 +1,12 @@
 #!/usr/bin/ruby
 
+require 'csv'
+
 $LOAD_PATH.unshift(__dir__)
 require 'point_of_interest'
 
 class Page < Struct.new(:data)
-  DUMP_FILE_NAME = 'data/dump'
+  DUMP_FILE_NAME = 'data/dump.csv'
 
   def process
     poi_array.each do |poi|
@@ -13,8 +15,9 @@ class Page < Struct.new(:data)
   end
 
   def dump(poi)
-    File.open(DUMP_FILE_NAME, 'a+') do |f|
-      f.write(poi.output)
+    CSV.open(DUMP_FILE_NAME, 'a+', { col_sep:'|'}) do |csv|
+
+      csv << poi.output
     end
   end
 

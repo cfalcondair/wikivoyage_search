@@ -9,7 +9,13 @@ class PointOfInterest
   end
 
   def output
-   "#{name}|#{alt_name}|#{lat}|#{lon}|#{content}\n"
+   [
+     name,
+     alt_name,
+     lat,
+     lon,
+     content
+   ]
   end
 
   def parse_data(data)
