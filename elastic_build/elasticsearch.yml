@@ -1,3 +1,9 @@
+################# Network ############################
 network.bind_host: 0
+
+################# Security ###########################
 xpack.security.enabled: false
 
+############ Head Plugin Access ######################
+http.cors.enabled: true
+http.cors.allow-origin: /https?:\/\/localhost(:[0-9]+)?/
