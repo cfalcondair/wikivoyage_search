@@ -1,13 +1,58 @@
 #!/usr/bin/ruby
 
-class Page < Struct.new(:data)
-  def process
-    return unless redirect?
+$LOAD_PATH.unshift(__dir__)
+require 'point_of_interest'
 
+class Page < Struct.new(:data)
+  DUMP_FILE_NAME = 'data/dump'
+
+  def process
+    poi_array.each do |poi|
+      dump(poi)
+    end
   end
 
-  def text_element
-    @text_element ||= data.at_css('text')
+  def dump(poi)
+    File.open(DUMP_FILE_NAME, 'a+') do |f|
+      f.write(poi.output)
+    end
+  end
+
+  def internal_page?
+    !title.text.match(/Wikivoyage:/).nil?
+  end
+
+  def relevant?
+    contains_see? ||
+      contains_do?
+  end
+  
+  def contains_see?
+    text.text.include?('see')
+  end
+
+  def contains_do?
+    text.text.include?('do')
+  end
+
+  def poi_array
+    see_array + do_array
+  end
+
+  def see_array
+    text.text.scan(/\*\s\{\{see[^\}]*\n\}\}/).collect do |str|
+      PointOfInterest.new(data: str, source_page: self, type: 'see')
+    end
+  end
+
+  def do_array
+    text.text.scan(/\*\s\{\{do[^\}]*\n\}\}/).collect do |str|
+      PointOfInterest.new(data: str, source_page: self, type: 'do')
+    end
+  end
+  
+  def text
+    @text ||= data.at_css('text')
   end
 
   def title
@@ -33,7 +78,7 @@ class Page < Struct.new(:data)
   end
 
   def redirect?
-    text_element.text.size < 100 &&
-      !text_element.text.match(/#REDIRECT\s*[[[^\]]*]]/).nil?
+    text.text.size < 200 &&
+      !text.text.match(/#REDIRECT\s*[[[^\]]*]]/).nil?
   end
 end
