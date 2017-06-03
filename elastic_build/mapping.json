@@ -16,13 +16,17 @@
       "type": "text"
     },
     "content": {
-      "type": "string",
+      "type": "text",
       "fields": {
         "english": {
           "type": "text",
           "analyzer": "english"
         }
       }
+    },
+    "type": {
+      "type": "text"
+     }
     }
   }
 }
