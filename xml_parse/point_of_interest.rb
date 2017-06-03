@@ -21,7 +21,7 @@ class PointOfInterest
     end
     split_data = data.split(/\|\s*/)
 
-    # Ignore the '* {{' and '}}'
+    # Ignore the '* {{'
     split_data = split_data[1..-1]
 
     split_data.each_with_object({}) do |str, h|
