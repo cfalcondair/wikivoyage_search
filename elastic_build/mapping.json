@@ -1,0 +1,28 @@
+{
+  "_all": {
+    "enabled": false
+  },
+  "properties": {
+    "page_title": {
+      "type": "text"
+    },
+    "geography": {
+      "type": "geo_point"
+    },
+    "name": {
+      "type": "string"
+    },
+    "alternate_name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "fields": {
+        "english": {
+          "type": "text",
+          "analyzer": "english"
+        }
+      }
+    }
+  }
+}
