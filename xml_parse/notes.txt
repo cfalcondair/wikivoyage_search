@@ -3,7 +3,7 @@ There are 56334 pages received
 Only appears to be 1 comment per page, and does not contain any useful information for us.
 There appear to be some redirect pages, so we need to filter those out.
 
-Rather than filter out unneeded pages, assume that the /* {{see/ is all we care about. So just search for that.
+Rather than filter out unneeded pages, assume that the /* {{see|do/ is all we care about. So just search for that.
 Worked effectively.
 
 -Format of the data of a See is:
@@ -20,4 +20,7 @@ occurence of the '=' to be the key,value delimiter.
 - There can be empty between delimiters ie. key=value | | key=value, so only look for a key value pair when there is an '=' in the string.
 - No other problems
 - checking value space for each key
+- lat and lon all have valid values
+- there are some points of interest with no names or alternate names. As they only number at 29, we can ignore those.
+
 
