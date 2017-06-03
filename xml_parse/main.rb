@@ -8,6 +8,7 @@ require 'nokogiri'
 class Main
   def initialize
     @xml_file_path = 'data/page_articles.xml'  
+    @count = 0
   end
 
   def execute
@@ -15,8 +16,20 @@ class Main
       if page_node?(node)
         xml = Nokogiri::XML(node.outer_xml)
         page = Page.new(xml)
-        page.process
+        page.process if page.relevant?
+
+        @count += 1
+        puts @count if @count % 1000 == 0
       end
+    end
+    print_dump_descriptor
+
+    puts "done"
+  end
+
+  def print_dump_descriptor
+    File.open('data/dump_desription', 'a+') do |f|
+      f << 'name|alt_name|lat|long|content'
     end
   end
 
