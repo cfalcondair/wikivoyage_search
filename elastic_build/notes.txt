@@ -2,3 +2,5 @@ Going to use docker to run the elasticsearch engine. This provides portability t
 Use docker-compose.
 Build the elasticsearch.yml file so configuration is transparent.
 Include docker_execution file to run the docker components
+
+Build simple mapping and upload content into the ES cluster
