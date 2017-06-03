@@ -3,3 +3,21 @@ There are 56334 pages received
 Only appears to be 1 comment per page, and does not contain any useful information for us.
 There appear to be some redirect pages, so we need to filter those out.
 
+Rather than filter out unneeded pages, assume that the /* {{see/ is all we care about. So just search for that.
+Worked effectively.
+
+-Format of the data of a See is:
+* {{ See| key_1=value_1 | key_2=value_2 }}
+-So use | as our delimiter there and convert to a ruby hash
+-the delimiter is sometimes surrounded by space so need to handle that.
+-There can sometimes be no value so need to still extract the key with no value
+-there can sometimes be the | delimiter in a value. But it looks to be always
+surrounded by a pair of [[]]. So convert all | within those brackets to :
+-There can be more than 1 | delimiters in the [[]] so need to handle any number
+of them.
+- There can be multiple '=' in a value. This happens with urls. So use the first
+occurence of the '=' to be the key,value delimiter.
+- There can be empty between delimiters ie. key=value | | key=value, so only look for a key value pair when there is an '=' in the string.
+- No other problems
+- checking value space for each key
+
