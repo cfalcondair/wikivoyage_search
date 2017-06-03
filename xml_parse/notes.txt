@@ -23,4 +23,4 @@ occurence of the '=' to be the key,value delimiter.
 - lat and lon all have valid values
 - there are some points of interest with no names or alternate names. As they only number at 29, we can ignore those.
 
-
+- Found 68154 pages to index
