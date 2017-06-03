@@ -10,10 +10,10 @@
       "type": "geo_point"
     },
     "name": {
-      "type": "string"
+      "type": "text"
     },
     "alternate_name": {
-      "type": "string"
+      "type": "text"
     },
     "content": {
       "type": "string",
