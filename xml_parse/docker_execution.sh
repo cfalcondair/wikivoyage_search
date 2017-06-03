@@ -7,6 +7,6 @@ then
   docker build -t ruby_parser .
   touch bundled
 fi  
-docker run -it -v "$PWD/..":/usr/src/myapp -w /usr/src/myapp ruby_parser 
+docker run -it -v "$PWD/..":/usr/src/myapp -w /usr/src/myapp ruby_parser ruby xml_parse/main.rb
 
 
