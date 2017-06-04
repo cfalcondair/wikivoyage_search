@@ -10,6 +10,7 @@ class Uploader
     @count = 0
     load_file do |poi|
       @count += 1
+
       puts @count if @count % 1000 == 0
       es_connection.index(
         index: 'wikivoyage',
@@ -37,6 +38,8 @@ class Uploader
           lon: line[3]
         }
       end
+      next if line[2].nil? != line[3].nil?
+
       poi['content'] = line[4]
       poi['page_title'] = line[5]
       poi['type'] = line[6]
