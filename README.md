@@ -10,10 +10,11 @@ It also requires:
 - Docker Compose(https://docs.docker.com/compose/install/)
 
 
-run the 5 shell scripts in the location that are.
+run the 6 shell scripts in the location that are.
 
 Description of each shell script:
-- 1: Builds the docker image to download and parse the raw data.
+- 0: Download the data
+- 1: Builds the docker image to parse the raw data.
 - 2: Initialises the elasticsearch image and starts the service
 - 3: Writes the mapping for the wikivoyage data
 - 4: Waits for the elasticsearch image to be up and running and then it will start to write the data to
