@@ -12,15 +12,28 @@
     "name": {
       "type": "text"
     },
+    "name_page_title": {
+      "type": "text",
+      "norms": { "enabled": false },
+      "fields": {
+        "english": {
+          "type": "text",
+          "analyzer": "english",
+          "norms": { "enabled": false }
+        }
+      }
+    },
     "alternate_name": {
       "type": "text"
     },
     "content": {
       "type": "text",
+      "norms": { "enabled": false },
       "fields": {
         "english": {
           "type": "text",
-          "analyzer": "english"
+          "analyzer": "english",
+          "norms": { "enabled": false }
         }
       }
     },

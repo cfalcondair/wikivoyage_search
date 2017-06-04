@@ -24,12 +24,12 @@ class Uploader
   end 
 
   def load_file
-    CSV.foreach('data/dump.csv', { encoding: 'ISO-8859-1', col_sep:'|'}) do |line|
+    CSV.foreach('data/dump.csv', { encoding: 'UTF-8', col_sep:'|'}) do |line|
       name = line[0] || line[1]
       next if name.nil?
       
       poi = {
-        name: name
+        'name' => name
       }
       poi['geography'] = if !line[2].nil?
         {
@@ -40,6 +40,7 @@ class Uploader
       poi['content'] = line[4]
       poi['page_title'] = line[5]
       poi['type'] = line[6]
+      poi['name_page_title'] = "#{poi['name']} #{poi['page_title']}"
 
       yield poi
     end
