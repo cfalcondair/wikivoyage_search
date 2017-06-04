@@ -10,7 +10,6 @@ class Query
     result = es_connection.search(
       body: query_object(query_string)
     )
-    puts query_object(query_string).inspect
     print_result(result)
   end
 
