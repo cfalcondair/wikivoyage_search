@@ -14,7 +14,7 @@ Description of each shell script:
 - 4: Waits for the elasticsearch image to be up and running and then it will start to write the data to
    the index.
 - 5: Will query the runninng elasticsearch image (need to pass the query arguments to it)
-   ie. source run_5.sh "museums in melbourne"
+   ie. ``source run_5.sh "museums in melbourne"``
    It will return a list of the top ten most relevant items related to that search.
 
 What are the 2-3 most common relevance challenges?
