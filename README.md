@@ -4,6 +4,10 @@ Instructions:
 
 Operate this in a linux environment:
 ``Linux vm-jessie 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64 GNU/Linux``
+It also requires:
+- Docker(https://docs.docker.com/engine/installation/linux/ubuntu/)
+- Docker Compose(https://docs.docker.com/compose/install/)
+
 
 run the 5 shell scripts in the location that are.
 
