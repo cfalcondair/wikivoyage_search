@@ -1,0 +1,16 @@
+- the first priority is to get the query functionality running.
+
+- So we need to get ES queries running and returning.
+- Seems to be working well.
+- Now we want to filter content first, and then score on relevant content.
+- so we will check whether the name_page_title field of the poi(point of interest)
+  contains 75% of our english analyzed words, or it contains a 'do'/'see' keyword
+  and 1 other relevant keyword from the name_page_title field.
+
+- this also seems to work well. It is difficult at this moment to find false 
+  negatives, however, all the content that is being returned for simple queries
+  like 'parks in #{location}' or 'things to do in #{location}' is relevant.
+
+- The relevancy score is a sum contirbutions from page_title, name and content.
+  This includes a *2 boost for the name field as it usually contained the most relevant information
+  from my inspect of results.
