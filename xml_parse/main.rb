@@ -20,7 +20,6 @@ class Main
         page.process if page.relevant?
 
         @count += 1
-        put '.' if @count % 100 == 0
         puts @count if @count % 1000 == 0
       end
     end
