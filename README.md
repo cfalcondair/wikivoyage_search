@@ -9,9 +9,10 @@ It also requires:
 - Docker(https://docs.docker.com/engine/installation/linux/ubuntu/)
 - Docker Compose(https://docs.docker.com/compose/install/)
 
+How to build search engine:
+``source build_search_engine``
 
-run the 6 shell scripts in the location that are.
-
+This will run 5 scripts.
 Description of each shell script:
 - 0: Download the data
 - 1: Builds the docker image to parse the raw data.
@@ -19,9 +20,11 @@ Description of each shell script:
 - 3: Writes the mapping for the wikivoyage data
 - 4: Waits for the elasticsearch image to be up and running and then it will start to write the data to
    the index.
-- 5: Will query the runninng elasticsearch image (need to pass the query arguments to it)
-   ie. ``source run_5.sh "museums in melbourne"``
-   It will return a list of the top ten most relevant items related to that search.
+
+To execute query, run:
+``source run_5.sh "museums in melbourne"``
+
+This will query the runninng elasticsearch image. It will return a list of the top ten most relevant items related to that search.
 
 What are the 2-3 most common relevance challenges?
 
