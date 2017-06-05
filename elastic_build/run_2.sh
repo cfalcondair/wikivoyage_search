@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+echo "Starting Elasticsearch cluster"
 # Build custom docker image
 docker build --tag=elasticsearch-custom .
 

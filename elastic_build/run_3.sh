@@ -1,4 +1,6 @@
+#!/usr/bin/ruby
 
+echo "Upload mapping to elasticsearch"
 printf 'Waiting for Elasticsearch to Start'
 until $(curl --output /dev/null --silent --head localhost:9200); do
     printf '.'

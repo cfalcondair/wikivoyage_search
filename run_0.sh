@@ -1,4 +1,6 @@
 #!/bin/sh
+
+echo "Downloading wikivoyage data"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DATA_DIR=$DIR"/data/"
 ARTICLES_FILE="page_articles.xml"

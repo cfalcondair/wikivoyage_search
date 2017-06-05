@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+echo "Uploading data to elasticsearch"
 docker run --rm -v "$PWD/..":/usr/src/app -w /usr/src/app ruby:latest bundle install
 docker build -t ruby_uploader .
 
