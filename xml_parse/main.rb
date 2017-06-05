@@ -12,6 +12,7 @@ class Main
   end
 
   def execute
+    puts "Parsing data"
     stream_xml.each do |node|
       if page_node?(node)
         xml = Nokogiri::XML(node.outer_xml)
@@ -19,6 +20,7 @@ class Main
         page.process if page.relevant?
 
         @count += 1
+        put '.' if @count % 100 == 0
         puts @count if @count % 1000 == 0
       end
     end
