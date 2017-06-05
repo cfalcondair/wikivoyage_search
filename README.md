@@ -6,8 +6,10 @@ Operate this in a linux environment:
 ``Linux vm-jessie 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64 GNU/Linux``
 
 It also requires:
-- Docker(https://docs.docker.com/engine/installation/linux/ubuntu/)
-- Docker Compose(https://docs.docker.com/compose/install/)
+- Docker version 17.05.0-ce, build 89658be(https://docs.docker.com/engine/installation/linux/ubuntu/)
+- docker-compose version 1.13.0, build 1719ceb(https://docs.docker.com/compose/install/)
+
+
 
 How to build search engine:
 ``source build_search_engine``
