@@ -7,8 +7,10 @@ require 'nokogiri'
 $stdout.sync = true
 
 class Main
+  XML_FILE = '/tmp/page_articles.xml'
+  DESCRIPTION_FILE = '/tmp/dump_description'
+
   def initialize
-    @xml_file_path = 'data/page_articles.xml'
     @count = 0
   end
 
@@ -30,7 +32,7 @@ class Main
   end
 
   def print_dump_descriptor
-    File.open('data/dump_desription', 'w+') do |f|
+    File.open(DESCRIPTION_FILE, 'w+') do |f|
       f << 'name|alt_name|lat|long|content|page_title|type'
     end
   end
@@ -40,7 +42,7 @@ class Main
   end
 
   def stream_xml
-    Nokogiri::XML::Reader(File.open(@xml_file_path))
+    Nokogiri::XML::Reader(File.open(XML_FILE))
   end
 end
 

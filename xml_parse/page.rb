@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(__dir__)
 require 'point_of_interest'
 
 class Page < Struct.new(:data)
-  DUMP_FILE_NAME = 'data/dump.csv'
+  DUMP_FILE_NAME = '/tmp/dump.csv'
 
   def process
     poi_array.each do |poi|
@@ -29,7 +29,7 @@ class Page < Struct.new(:data)
     contains_see? ||
       contains_do?
   end
-  
+
   def contains_see?
     text.text.include?('see')
   end
@@ -53,7 +53,7 @@ class Page < Struct.new(:data)
       PointOfInterest.new(data: str, source_page: self, type: 'do')
     end
   end
-  
+
   def text
     @text ||= data.at_css('text')
   end
@@ -63,11 +63,11 @@ class Page < Struct.new(:data)
   end
 
   def minimal_text?
-    data.text.size < 400 
+    data.text.size < 400
   end
 
   def long_comment?
-    !comment.nil? && 
+    !comment.nil? &&
       comment.text.size > 200
   end
 

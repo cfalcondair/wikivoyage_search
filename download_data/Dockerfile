@@ -7,4 +7,4 @@ RUN apt-get install -y \
     curl \
     bzip2
 
-CMD bash download_data/run_0.sh; touch /tmp/downloaded_data
+CMD bash download_data/main.sh; touch /tmp/downloaded_data

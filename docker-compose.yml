@@ -30,28 +30,29 @@ services:
     build: download_data/
     volumes:
       - .:/wikivoyage_search
-      - /tmp:/tmp
+      - /tmp/wikivoyage:/tmp
     working_dir: /wikivoyage_search
-    ports:
-      - 9001
   parse_data:
     build: xml_parse/
     volumes:
       - .:/wikivoyage_search/
-      - /tmp:/tmp
+      - /tmp/wikivoyage:/tmp
     working_dir: /wikivoyage_search/
-    ports:
-      - 9001
     links:
       - download_data
   upload_data:
     build: upload_data/
     volumes:
       - .:/wikivoyage_search/
-      - /tmp:/tmp
+      - /tmp/wikivoyage:/tmp
     working_dir: /wikivoyage_search/
     links:
       - parse_data
+      - elastic_build
+    environment:
+      - "ELASTICSEARCH_IP=elastic_build"
+    networks:
+      - esnet
 
 volumes:
   esdata1:

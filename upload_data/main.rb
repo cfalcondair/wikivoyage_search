@@ -6,9 +6,10 @@ require 'csv'
 $stdout.sync = true
 
 class Main
-  FILE_NAME = 'data/dump.csv'
+  FILE_NAME = '/tmp/dump.csv'
 
   def run
+    puts "Uploading data"
     @count = 0
     load_file do |poi|
       @count += 1
@@ -20,14 +21,15 @@ class Main
         body: poi
       )
     end
+    puts "Done"
   end
 
   def es_connection
-    @es_connection ||= Elasticsearch::Client.new(host: '172.17.0.1', port: '9200')
+    @es_connection ||= Elasticsearch::Client.new(host: ENV['ELASTICSEARCH_IP'], port: '9200')
   end
 
   def load_file
-    CSV.foreach('data/dump.csv', { encoding: 'UTF-8', col_sep:'|'}) do |line|
+    CSV.foreach(FILE_NAME, { encoding: 'UTF-8', col_sep:'|'}) do |line|
       name = line[0] || line[1]
       next if name.nil?
 
