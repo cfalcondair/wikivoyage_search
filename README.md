@@ -1,5 +1,7 @@
 # wikivoyage_search
 An Elasticsearch search engine with the Wikivoyage data
+
+
 Instructions:
 
 Operate this in a linux environment:
@@ -12,10 +14,10 @@ It also requires:
 
 
 How to build search engine:
-``source build_search_engine``
+``source build_search_engine.sh``
 
-This will run 5 scripts.
-Description of each shell script:
+This will run run 5 operations:
+Description of operation:
 - 0: Download the data
 - 1: Builds the docker image to parse the raw data.
 - 2: Initialises the elasticsearch image and starts the service
