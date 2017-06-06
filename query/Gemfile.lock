@@ -13,12 +13,23 @@ GEM
       multipart-post (>= 1.2, < 3)
     multi_json (1.12.1)
     multipart-post (2.0.0)
+    mustermann (1.0.0)
+    rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
+    tilt (2.0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   elasticsearch
+  sinatra
 
 BUNDLED WITH
-   1.15.0
+   1.15.1
