@@ -1,0 +1,10 @@
+- Build simple mapping and upload content into the ES cluster
+- Mapping works well, need to consider relevency now.
+- We want to concatenate the page_title and name field for searching
+  so that if we are searching for 'museums in berlin', removing stopwords,
+  we can find the 'berlin' keyword in the page_title, and the 'museum' keyword
+  in the page_title.
+
+- Use the english ES analyzer to stem, lowercase and remove stopwords. We do this for
+  the name_page_title field and the content field as those are the fields that we are going
+  to be search on and finding relevency from.
