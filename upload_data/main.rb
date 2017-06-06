@@ -3,7 +3,9 @@
 require 'elasticsearch'
 require 'csv'
 
-class Uploader
+$stdout.sync = true
+
+class Main
   FILE_NAME = 'data/dump.csv'
 
   def run
@@ -22,13 +24,13 @@ class Uploader
 
   def es_connection
     @es_connection ||= Elasticsearch::Client.new(host: '172.17.0.1', port: '9200')
-  end 
+  end
 
   def load_file
     CSV.foreach('data/dump.csv', { encoding: 'UTF-8', col_sep:'|'}) do |line|
       name = line[0] || line[1]
       next if name.nil?
-      
+
       poi = {
         'name' => name
       }
@@ -51,5 +53,5 @@ class Uploader
 end
 
 if __FILE__ == $PROGRAM_NAME
-  Uploader.new.run
+  Main.new.run
 end

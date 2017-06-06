@@ -1,17 +1,18 @@
-#!/usr/bin/ruby
-# encoding: utf-8
+#!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(__dir__)
 require 'page'
 require 'nokogiri'
 
+$stdout.sync = true
+
 class Main
   def initialize
-    @xml_file_path = 'data/page_articles.xml'  
+    @xml_file_path = 'data/page_articles.xml'
     @count = 0
   end
 
-  def execute
+  def run
     puts "Parsing data"
     stream_xml.each do |node|
       if page_node?(node)
@@ -41,10 +42,8 @@ class Main
   def stream_xml
     Nokogiri::XML::Reader(File.open(@xml_file_path))
   end
-  
 end
 
 if __FILE__ == $PROGRAM_NAME
-  Main.new.execute
+  Main.new.run
 end
-
