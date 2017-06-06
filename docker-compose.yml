@@ -1,0 +1,63 @@
+version: '3'
+services:
+  elastic_build:
+    build: elastic_build/
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+  elastic_mapping:
+    build: elastic_mapping/
+    volumes:
+      - .:/wikivoyage_search
+    working_dir: /wikivoyage_search/elastic_mapping/
+    links:
+      - elastic_build
+    environment:
+      - "ELASTICSEARCH_IP=elastic_build"
+    networks:
+      - esnet
+
+  download_data:
+    build: download_data/
+    volumes:
+      - .:/wikivoyage_search
+      - /tmp:/tmp
+    working_dir: /wikivoyage_search
+    ports:
+      - 9001
+  parse_data:
+    build: xml_parse/
+    volumes:
+      - .:/wikivoyage_search/
+      - /tmp:/tmp
+    working_dir: /wikivoyage_search/
+    ports:
+      - 9001
+    links:
+      - download_data
+  upload_data:
+    build: upload_data/
+    volumes:
+      - .:/wikivoyage_search/
+      - /tmp:/tmp
+    working_dir: /wikivoyage_search/
+    links:
+      - parse_data
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+
+networks:
+  esnet:

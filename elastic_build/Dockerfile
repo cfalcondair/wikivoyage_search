@@ -6,5 +6,3 @@ RUN chown elasticsearch:elasticsearch config/elasticsearch.yml
 USER elasticsearch
 RUN bin/elasticsearch-plugin install analysis-icu
 
-EXPOSE 9200
-EXPOSE 9300
