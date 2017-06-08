@@ -11,6 +11,7 @@ class Query
       body: query_object(query_string)
     )
     print_result(result)
+    result["hits"]["hits"]
   end
 
   def print_result(result)
@@ -97,13 +98,16 @@ class Query
           }
 
       }
-    }                                                                                                                                                                                                                                                                                                                                                                                                              }
+    }
+  }
   end
 
   def es_connection
-    Elasticsearch::Client.new(host: '10.0.2.15', port: 9200)
+    Elasticsearch::Client.new(host: ENV['ELASTICSEARCH_IP'], port: 9200)
   end
 end
 
-str = ARGV[0]
-Query.new.run(str)
+if __FILE__ == $PROGRAM_NAME
+  str = ARGV[0]
+  Query.new.run(str)
+end

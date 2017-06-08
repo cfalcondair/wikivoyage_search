@@ -11,7 +11,7 @@ services:
     volumes:
       - esdata1:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
+      - 9200
     networks:
       - esnet
   elastic_mapping:
@@ -23,6 +23,19 @@ services:
       - elastic_build
     environment:
       - "ELASTICSEARCH_IP=elastic_build"
+    networks:
+      - esnet
+  query:
+    build: query/
+    volumes:
+      - ./query:/usr/src/app
+    working_dir: /usr/src/app
+    links:
+      - elastic_build
+    environment:
+      - "ELASTICSEARCH_IP=elastic_build"
+    ports:
+      - 4567:4567
     networks:
       - esnet
 

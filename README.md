@@ -25,8 +25,8 @@ Description of operation:
 - 4: Waits for the elasticsearch image to be up and running and then it will start to write the data to
    the index.
 
-To execute query, run:
-``source run_5.sh "museums in melbourne"``
+To execute a query, first ensure that `curl` and `jq` are installed, then run:
+curl -XPOST localhost:4567/ -d 'query=museums in melbourne' | jq .
 
 This will query the runninng elasticsearch image. It will return a list of the top ten most relevant items related to that search.
 
