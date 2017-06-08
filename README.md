@@ -26,7 +26,7 @@ Description of operation:
    the index.
 
 To execute a query, first ensure that `curl` and `jq` are installed, then run:
-curl -XPOST localhost:4567/ -d 'query=museums in melbourne' | jq .
+``curl -XPOST localhost:4567/ -d 'query=museums in melbourne' | jq .``
 
 This will query the runninng elasticsearch image. It will return a list of the top ten most relevant items related to that search.
 
@@ -37,11 +37,11 @@ this nature would be:
 - Finding associated, but not explicitly declared, pharses or words to assist in the search query. For example
   if one were to search for 'galleries in berlin', it should also be looking for 'arthouses in berlin' or
   any other places that might house art. In order to solve this, the stack would need to take each term in the
-  query sentence, find associative terms and include them in the query. This could be achieved by using an synonym lookup table 
+  query sentence, find associative terms and include them in the query. This could be achieved by using an synonym lookup table
   like the wordnet corpus which has an API in the python nltk library. Elasticsearch also has the notion of proximity matching of keywords
   or look-a-likes which could add implicit results to a search repsonse.
-  
-- The next challenge presents an ongoing issue regarding the accuracy/precision of relevancy. The notion of relevancy 
+
+- The next challenge presents an ongoing issue regarding the accuracy/precision of relevancy. The notion of relevancy
   can easily be measured on small data sets with labelling, but as the dataset grows larger, the task becomes more ominous.
   We could label the relevancy of a document for a particular query and measure the success of our engine,
   but when the query is client facing, and the permutations of queries and possible rankings balloons in size, the measure of success is more subjective.
